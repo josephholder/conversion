@@ -6,7 +6,7 @@ IDE: php storm
 Languages: HTML5, CSS, JavaScript(ECMAscript 5)  
 Assets: contains a normalize css and cut out images for web
 
-## #Explanation
+### Explanation
 Each answer is found in the corresponding file name. 
 The structure used are to contain all the code for that question in a single file.
 
