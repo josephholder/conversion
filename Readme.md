@@ -1,7 +1,7 @@
-##Conversion.com: Tech challenge
-#####By: Joseph holder
+## Conversion.com: Tech challenge
+##### By: Joseph holder
 
-###Developer tools used:
+### Developer tools used:
 IDE: php storm  
 Languages: HTML5, CSS, JavaScript(ECMAscript 5)  
 Assets: contains a normalize css and cut out images for web
