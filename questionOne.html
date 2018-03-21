@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./assets/css/normalize.css" type="text/css">
+    <style type="text/css">
+        body {
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1,h2,h3,h4,h5,p,span {
+            color: #fff;
+            text-align: center;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+        p {
+            font-size: 12px;
+        }
+        .img-responsive {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .center-block {
+            margin: 0 auto;
+            text-align: center;
+        }
+        .lightbox-overlay {
+            background: rgba(10,10,10, 0.85);
+            height: 100vh;
+        }
+        .lightbox-container {
+            border: 1px solid rgba(10,10,10, 0.5);
+            border-radius: 5px;
+            background-color: #fff;
+            max-width: 550px;
+            min-height: 350px;
+            margin: 0 auto;
+            position: relative;
+            top: 20vh;
+            padding: 7px 6px 6px 6px;
+            box-sizing: border-box;
+        }
+        .lightbox-module {
+            background: url("./assets/images/lightBoxBackground.jpg") no-repeat;
+            background-size: cover;
+            max-width: 550px;
+            min-height: 350px;
+            margin: 0 auto;
+        }
+        .lightbox-close {
+            float: right;
+            position: relative;
+            left: 20px;
+            top: -20px;
+            cursor: pointer;
+        }
+        .lightbox-body {
+            margin-top: -25px;
+        }
+        .lightbox-body > h3 {
+            padding: 15px 0;
+        }
+        .lightbox-timer {
+            height: 85px;
+            width: 185px;
+            background: #fff;
+            margin: 0 auto;
+            position: relative;
+            top: -50px;
+            box-shadow: rgba(50, 50, 50, 0.3) 0 2px 7px 2px
+        }
+        .lightbox-timer > h3 {
+            color: #666;
+            padding: 15px 0 0 0;
+        }
+        .lightbox-timer > h1 {
+            color: #f49f00;
+            font-weight: bold;
+        }
+        .lightbox-field > * {
+            text-align: center;
+            display: block;
+            width: 85%;
+            border: 0;
+            margin: 0 auto;
+            padding: 10px 0;
+        }
+        .lightbox-field > .lightbox-email {
+            margin: 10px auto;
+            border: 1px solid rgba(100, 100, 100, 0.5);
+            box-shadow: inset rgba(20, 20, 20, 0.9) 0 0 0.5px 0;
+            border-radius: 2px;
+        }
+        .lightbox-field > .lightbox-submit {
+            width: 50%;
+            margin-bottom: 35px;
+            margin-top: 15px;
+            color: #fff;
+            box-shadow: rgba(30, 30, 30, 0.3) 1px 2px 6px 0;
+            background-color: #f49f00;
+            border-radius: 3px;
+            border: 1px solid rgba(200, 200, 200, 0.2);
+            text-shadow: 0 -1px 0 rgba(80,80,80, 0.5);
+            font-weight: 700;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.6s;
+        }
+        .lightbox-submit:hover {
+            background-color: #e89200;
+            border: 1px solid #e89200;
+            box-shadow: rgba(30, 30, 30, 0.6) 1px 2px 6px 0;
+        }
+        .lightbox-terms {
+            font-size: 11px;
+        }
+        @media screen and (max-width: 600px) {
+            .lightbox-container {
+                margin: 15px;
+            }
+            .lightbox-body {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="cv-lightbox">
+        <div class="lightbox-overlay">
+            <div class="lightbox-container">
+                <div class="lightbox-module">
+                    <div id="lightbox-close" class="lightbox-close"  onclick="onClose()" ><img src="./assets/images/close.png" alt=""></div>
+                    <div class="lightbox-timer">
+                        <h3>This expires in</h3>
+                        <h1 id="time" class="timer"></h1>
+                    </div>
+                    <div class="lightbox-body">
+                        <img class="img-responsive center-block" src="./assets/images/tenPercentOff.png" alt="">
+                        <h3>just by subscribing to our newsletter</h3>
+                        <form action="" class="lightbox-field">
+                            <input class="lightbox-email" type="email" name="email" placeholder="Enter your email address">
+                            <button class="lightbox-submit" type="submit">GET 10% OFF</button>
+                        </form>
+                        <p class="lightbox-terms">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="application/javascript">
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            var countDown = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                //Adding the 0 in front of the minutes
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.innerHTML = minutes + ":" + seconds;
+                //decrement the timer
+                --timer;
+                if (timer < 0) {
+                    clearInterval(countDown);
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var twoMinutes = 60 * 2,
+                display = document.getElementById('time');
+            startTimer(twoMinutes, display);
+        };
+    </script>
+    <script>
+        function onClose() {
+            document.getElementById('cv-lightbox').style.display = "none";
+        }
+    </script>
+</body>
+</html>
